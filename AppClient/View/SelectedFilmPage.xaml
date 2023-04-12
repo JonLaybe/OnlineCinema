@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="OnlineCinema.View.SelectedFilmPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnlineCinema.View"
+             xmlns:command="clr-namespace:OnlineCinema.Model.InteractionServer.Command.GetPosterById"
+             xmlns:VM="clr-namespace:OnlineCinema.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <command:ConvertListToString x:Key="ConvertListToString"/>
+    </UserControl.Resources>
+
+    <Grid Background="#F4F4F4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="White" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Button Style="{DynamicResource ExitButton}" Width="25" Height="25" Margin="10 0 0 0" HorizontalAlignment="Left" Command="{Binding MainPageBtn, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{Binding SelectedPost.Photo, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="10 10 0 0"></Image>
+                </Grid>
+                <Grid Margin="5" Grid.Column="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0 10 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding SelectedPost.Name, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" TextWrapping="Wrap" FontSize="23"/>
+                            <Button Style="{StaticResource ComboboxButton}" Width="100" Height="30" HorizontalAlignment="Left" Command="{Binding PayBtn, UpdateSourceTrigger=PropertyChanged}">
+                                <Grid>
+                                    <TextBlock Text="Купить"/>
+                                </Grid>
+                            </Button>
+                            <Label Content="О фильме" FontWeight="Bold" FontSize="17"/>
+                            <StackPanel Grid.Row="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Год производства" Margin="0 0 10 0" Foreground="#A1000000"/>
+                                    <Label Content="{Binding SelectedPost.Year, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Жанры" Margin="0 0 10 0" Foreground="#A1000000"/>
+                                    <Label Content="{Binding SelectedPost.Genres, Converter={StaticResource ConvertListToString}, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Время" Margin="0 0 10 0" Foreground="#A1000000"/>
+                                    <Label Content="{Binding SelectedPost.Timing, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Описание" Margin="0 0 10 0" Foreground="#A1000000"/>
+                                    <TextBlock Text="{Binding SelectedPost.Description, UpdateSourceTrigger=PropertyChanged}"
+                                           Margin="5 0 0 0"
+                                           TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

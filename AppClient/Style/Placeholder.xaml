@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="TextBoxPlaceholder" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border BorderThickness="2"
+                                Height="30"
+                                Background="#F2F3F5"
+                                BorderBrush="#d7d8d9"
+                                CornerRadius="4">
+                        <Grid>
+                            <TextBox x:Name="placeholderTextBox"
+                                     Text="{TemplateBinding Text}" MaxLength="{TemplateBinding MaxLength}"
+                                     BorderThickness="0"
+                                     Background="Transparent"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
