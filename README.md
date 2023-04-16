@@ -5,5 +5,5 @@
   <li>AppClient - клиентская часть</li>
   <li>AppServer - серверная часть</li>
 </ul>
-AppClient - wpf приложение, которое взаимодействует с tcp сервером. Приложение отсылает запросы и получает ответ.
-AppServer - tcp server, использует базу данных "Microsoft SQL Server"(подход code first).
+<p>AppClient - wpf приложение, которое взаимодействует с tcp сервером. Приложение отсылает запросы и получает ответ.</p>
+<p>AppServer - tcp server, использует базу данных "Microsoft SQL Server"(подход code first).</p>
